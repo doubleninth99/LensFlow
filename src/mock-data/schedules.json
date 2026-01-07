@@ -1,6 +1,7 @@
 [
   {
     "id": "schedule_001",
+    "orderId": "order_001",
     "date": "2026-01-07",
     "startTime": "09:00",
     "endTime": "17:00",
@@ -46,6 +47,7 @@
   },
   {
     "id": "schedule_004",
+    "orderId": "order_003",
     "date": "2026-01-10",
     "startTime": "09:00",
     "endTime": "12:00",

@@ -116,6 +116,15 @@
           确认档期
         </button>
 
+        <!-- 转为订单按钮 -->
+        <button
+          v-if="schedule.status === 'confirmed' && !schedule.orderId"
+          class="btn-convert"
+          @click="handleConvertToOrder"
+        >
+          转为订单
+        </button>
+
         <!-- 联系客户按钮 -->
         <button class="btn-contact" @click="handleCall">
           联系客户
@@ -146,7 +155,7 @@ const props = defineProps({
   }
 })
 
-const emit = defineEmits(['close', 'confirm', 'cancel', 'edit', 'call'])
+const emit = defineEmits(['close', 'confirm', 'cancel', 'edit', 'call', 'convertToOrder'])
 
 /**
  * 状态文本
@@ -258,6 +267,13 @@ const handleCall = () => {
     })
   }
   emit('call', props.schedule)
+}
+
+/**
+ * 转为订单
+ */
+const handleConvertToOrder = () => {
+  emit('convertToOrder', props.schedule)
 }
 </script>
 
@@ -569,6 +585,7 @@ const handleCall = () => {
 .btn-cancel,
 .btn-edit,
 .btn-confirm,
+.btn-convert,
 .btn-contact {
   flex: 1;
   padding: 28rpx;
@@ -590,6 +607,11 @@ const handleCall = () => {
 .btn-confirm {
   background: var(--lens-accent);
   color: #FFFFFF;
+}
+
+.btn-convert {
+  background: rgba(33, 150, 243, 0.2);
+  color: #2196F3;
 }
 
 .btn-contact {

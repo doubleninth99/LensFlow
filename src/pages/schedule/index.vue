@@ -87,6 +87,7 @@
       @cancel="handleDetailCancel"
       @edit="handleDetailEdit"
       @call="handleDetailCall"
+      @convertToOrder="handleConvertToOrder"
     />
 
     <!-- 档期表单弹窗 -->
@@ -426,6 +427,17 @@ const handleReject = (request) => {
       icon: 'success'
     })
   }
+}
+
+/**
+ * 档期转订单
+ */
+const handleConvertToOrder = (schedule) => {
+  detailVisible.value = false
+  // 跳转到订单页面，并传递档期信息
+  uni.navigateTo({
+    url: `/pages/orders/index?scheduleId=${schedule.id}`
+  })
 }
 
 onMounted(() => {
