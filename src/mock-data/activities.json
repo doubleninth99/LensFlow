@@ -1,0 +1,56 @@
+[
+  {
+    "id": "act_001",
+    "type": "style_selected",
+    "clientName": "林小姐",
+    "action": "选择了风格",
+    "detail": "法式浪漫",
+    "time": "10分钟前",
+    "avatar": "https://i.pravatar.cc/150?img=1"
+  },
+  {
+    "id": "act_002",
+    "type": "payment",
+    "clientName": "王先生",
+    "action": "已支付定金",
+    "detail": "¥500",
+    "time": "1小时前",
+    "avatar": "https://i.pravatar.cc/150?img=2"
+  },
+  {
+    "id": "act_003",
+    "type": "delivery_confirmed",
+    "clientName": "张小姐",
+    "action": "已确认交付",
+    "detail": "36张精修照片",
+    "time": "3小时前",
+    "avatar": "https://i.pravatar.cc/150?img=3"
+  },
+  {
+    "id": "act_004",
+    "type": "style_selected",
+    "clientName": "李女士",
+    "action": "选择了风格",
+    "detail": "极简主义",
+    "time": "5小时前",
+    "avatar": "https://i.pravatar.cc/150?img=4"
+  },
+  {
+    "id": "act_005",
+    "type": "appointment",
+    "clientName": "赵先生",
+    "action": "预约了档期",
+    "detail": "2024年2月14日",
+    "time": "昨天",
+    "avatar": "https://i.pravatar.cc/150?img=5"
+  },
+  {
+    "id": "act_006",
+    "type": "delivery_confirmed",
+    "clientName": "陈小姐",
+    "action": "已确认交付",
+    "detail": "28张精修照片",
+    "time": "2天前",
+    "avatar": "https://i.pravatar.cc/150?img=6"
+  }
+]

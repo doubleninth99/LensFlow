@@ -1,0 +1,52 @@
+{
+  "pages": [
+    {
+      "path": "pages/photographer/dashboard/index",
+      "style": {
+        "navigationBarTitleText": "工作台",
+        "navigationStyle": "custom",
+        "backgroundColor": "#121212",
+        "backgroundTextStyle": "light"
+      }
+    },
+    {
+      "path": "pages/schedule/index",
+      "style": {
+        "navigationBarTitleText": "档期预约",
+        "backgroundColor": "#121212",
+        "backgroundTextStyle": "light"
+      }
+    },
+    {
+      "path": "pages/orders/index",
+      "style": {
+        "navigationBarTitleText": "项目订单",
+        "backgroundColor": "#121212",
+        "backgroundTextStyle": "light"
+      }
+    },
+    {
+      "path": "pages/delivery/index",
+      "style": {
+        "navigationBarTitleText": "交付中心",
+        "backgroundColor": "#121212",
+        "backgroundTextStyle": "light"
+      }
+    },
+    {
+      "path": "pages/client/moodboard/index",
+      "style": {
+        "navigationBarTitleText": "风格选择",
+        "navigationStyle": "custom",
+        "backgroundColor": "#121212",
+        "backgroundTextStyle": "light"
+      }
+    }
+  ],
+  "globalStyle": {
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "LensFlow",
+    "navigationBarBackgroundColor": "#121212",
+    "backgroundColor": "#121212"
+  }
+}

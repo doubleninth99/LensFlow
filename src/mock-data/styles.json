@@ -1,0 +1,90 @@
+[
+  {
+    "id": "style_001",
+    "title": "法式浪漫",
+    "coverImage": "https://picsum.photos/seed/romantic/800/1200",
+    "images": [
+      "https://picsum.photos/seed/romantic1/800/1200",
+      "https://picsum.photos/seed/romantic2/600/800"
+    ],
+    "description": "温柔浪漫的法式风格，适合喜欢优雅气质的新人",
+    "tags": ["浪漫", "优雅", "法式"]
+  },
+  {
+    "id": "style_002",
+    "title": "复古胶片",
+    "coverImage": "https://picsum.photos/seed/vintage/800/1200",
+    "images": [
+      "https://picsum.photos/seed/vintage1/800/1200",
+      "https://picsum.photos/seed/vintage2/600/800"
+    ],
+    "description": "怀旧胶片质感，记录时光的故事",
+    "tags": ["复古", "胶片", "怀旧"]
+  },
+  {
+    "id": "style_003",
+    "title": "极简主义",
+    "coverImage": "https://picsum.photos/seed/minimal/800/1200",
+    "images": [
+      "https://picsum.photos/seed/minimal1/800/1200",
+      "https://picsum.photos/seed/minimal2/600/800"
+    ],
+    "description": "简约而不简单，纯粹的画面表达",
+    "tags": ["极简", "纯粹", "现代"]
+  },
+  {
+    "id": "style_004",
+    "title": "自然森系",
+    "coverImage": "https://picsum.photos/seed/forest/800/1200",
+    "images": [
+      "https://picsum.photos/seed/forest1/800/1200",
+      "https://picsum.photos/seed/forest2/600/800"
+    ],
+    "description": "与自然对话，清新森系风格",
+    "tags": ["自然", "清新", "森系"]
+  },
+  {
+    "id": "style_005",
+    "title": "电影感",
+    "coverImage": "https://picsum.photos/seed/cinematic/800/1200",
+    "images": [
+      "https://picsum.photos/seed/cinematic1/800/1200",
+      "https://picsum.photos/seed/cinematic2/600/800"
+    ],
+    "description": "电影质感的画面，讲述你的爱情故事",
+    "tags": ["电影感", "叙事", "艺术"]
+  },
+  {
+    "id": "style_006",
+    "title": "街头潮流",
+    "coverImage": "https://picsum.photos/seed/street/800/1200",
+    "images": [
+      "https://picsum.photos/seed/street1/800/1200",
+      "https://picsum.photos/seed/street2/600/800"
+    ],
+    "description": "个性街头风格，展现真实的自己",
+    "tags": ["潮流", "街头", "个性"]
+  },
+  {
+    "id": "style_007",
+    "title": "唯美古风",
+    "coverImage": "https://picsum.photos/seed/classic/800/1200",
+    "images": [
+      "https://picsum.photos/seed/classic1/800/1200",
+      "https://picsum.photos/seed/classic2/600/800"
+    ],
+    "description": "东方美学韵味，古典与优雅的结合",
+    "tags": ["古风", "唯美", "东方"]
+  },
+  {
+    "id": "style_008",
+    "title": "光影艺术",
+    "coverImage": "https://picsum.photos/seed/light/800/1200",
+    "images": [
+      "https://picsum.photos/seed/light1/800/1200",
+      "https://picsum.photos/seed/light2/600/800"
+    ],
+    "description": "利用光影创造富有艺术感的画面",
+    "tags": ["光影", "艺术", "创意"]
+  }
+]

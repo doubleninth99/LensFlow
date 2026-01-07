@@ -1,0 +1,128 @@
+/**
+ * LensFlow 全局主题样式
+ *
+ * 深色主题配色方案
+ * 背景色: #121212
+ * 主文字: #FFFFFF
+ * 次文字: #E0E0E0
+ */
+
+:root {
+  /* 背景色 */
+  --lens-bg-primary: #121212;
+  --lens-bg-secondary: #1E1E1E;
+  --lens-bg-tertiary: #2A2A2A;
+
+  /* 文字颜色 */
+  --lens-text-primary: #FFFFFF;
+  --lens-text-secondary: #E0E0E0;
+  --lens-text-muted: #A0A0A0;
+  --lens-text-disabled: #606060;
+
+  /* 主题色（可选，用于按钮等高亮元素） */
+  --lens-accent: #8B7355;
+  --lens-accent-hover: #A0896B;
+
+  /* 边框颜色 */
+  --lens-border: rgba(255, 255, 255, 0.1);
+  --lens-border-hover: rgba(255, 255, 255, 0.2);
+
+  /* 毛玻璃效果 */
+  --lens-glass-bg: rgba(18, 18, 18, 0.8);
+  --lens-glass-blur: 10px;
+
+  /* 阴影 */
+  --lens-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --lens-shadow-md: 0 4px 16px rgba(0, 0, 0, 0.5);
+  --lens-shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.7);
+}
+
+/* 页面基础样式 */
+page {
+  background-color: var(--lens-bg-primary);
+  color: var(--lens-text-primary);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* 标题样式 - 衬线体 */
+.title-serif {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-weight: 300;
+}
+
+/* 毛玻璃效果类 */
+.glass-effect {
+  background: var(--lens-glass-bg);
+  backdrop-filter: blur(var(--lens-glass-blur));
+  -webkit-backdrop-filter: blur(var(--lens-glass-blur));
+}
+
+/* 呼吸灯动画 */
+@keyframes breathing {
+  0%, 100% {
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+    border-color: rgba(255, 255, 255, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
+    border-color: rgba(255, 255, 255, 0.6);
+  }
+}
+
+.breathing-border {
+  animation: breathing 2s ease-in-out infinite;
+}
+
+/* 淡入淡出动画 */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-in;
+}
+
+.fade-out {
+  animation: fadeOut 0.5s ease-out;
+}
+
+/* 选中状态 */
+.selected {
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  animation: breathing 2s ease-in-out infinite;
+}
+
+/* 平滑过渡 */
+.smooth-transition {
+  transition: all 0.3s ease;
+}
+
+/* 文本省略 */
+.text-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.text-ellipsis-2 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
