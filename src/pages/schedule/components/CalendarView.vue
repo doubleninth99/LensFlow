@@ -303,6 +303,11 @@ defineExpose({
     background: rgba(139, 115, 85, 0.2);
   }
 
+  &.has-schedule {
+    background: rgba(139, 115, 85, 0.1);
+    border: 1rpx solid rgba(139, 115, 85, 0.3);
+  }
+
   &.selected {
     background: var(--lens-accent);
     box-shadow: 0 4rpx 12rpx rgba(139, 115, 85, 0.4);
@@ -318,9 +323,10 @@ defineExpose({
 .schedule-dot {
   position: absolute;
   bottom: 8rpx;
-  width: 8rpx;
-  height: 8rpx;
+  width: 12rpx;
+  height: 12rpx;
   background: var(--lens-accent);
   border-radius: 50%;
+  box-shadow: 0 0 8rpx rgba(139, 115, 85, 0.6);
 }
 </style>

@@ -51,6 +51,7 @@
     <!-- 操作按钮 -->
     <view v-if="data.status === 'pending'" class="actions">
       <button class="btn-reject" @click.stop="handleReject">拒绝</button>
+      <button class="btn-create" @click.stop="handleCreateSchedule">创建档期</button>
       <button class="btn-approve" @click.stop="handleApprove">确认</button>
     </view>
   </view>
@@ -72,7 +73,7 @@ const props = defineProps({
   }
 })
 
-const emit = defineEmits(['click', 'approve', 'reject', 'detail'])
+const emit = defineEmits(['click', 'approve', 'reject', 'detail', 'createSchedule'])
 
 /**
  * 状态文本
@@ -135,6 +136,13 @@ const handleReject = () => {
  */
 const handleApprove = () => {
   emit('approve', props.data)
+}
+
+/**
+ * 创建档期
+ */
+const handleCreateSchedule = () => {
+  emit('createSchedule', props.data)
 }
 </script>
 
@@ -278,21 +286,27 @@ const handleApprove = () => {
 /* 操作按钮 */
 .actions {
   display: flex;
-  gap: 16rpx;
+  gap: 12rpx;
 }
 
 .btn-reject,
+.btn-create,
 .btn-approve {
   flex: 1;
-  padding: 24rpx;
+  padding: 20rpx 16rpx;
   border-radius: 12rpx;
-  font-size: 26rpx;
+  font-size: 24rpx;
   border: none;
 }
 
 .btn-reject {
   background: rgba(255, 255, 255, 0.05);
   color: var(--lens-text-primary);
+}
+
+.btn-create {
+  background: rgba(139, 115, 85, 0.15);
+  color: var(--lens-accent);
 }
 
 .btn-approve {

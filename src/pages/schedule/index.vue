@@ -60,9 +60,43 @@
           @cardClick="handleRequestClick"
           @approve="handleApprove"
           @reject="handleReject"
+          @createSchedule="handleRequestToSchedule"
         />
       </view>
     </view>
+
+    <!-- FAB 悬浮按钮 -->
+    <view class="fab-container" :class="{ expanded: fabExpanded }">
+      <view v-if="fabExpanded" class="fab-menu" @click="fabExpanded = false">
+        <view class="fab-item" @click.stop="handleNewSchedule">
+          <text class="fab-icon">📅</text>
+          <text class="fab-label">新建档期</text>
+        </view>
+      </view>
+      <view class="fab-button" @click="fabExpanded = !fabExpanded">
+        <text class="fab-main-icon" :class="{ rotated: fabExpanded }">+</text>
+      </view>
+    </view>
+
+    <!-- 档期详情弹窗 -->
+    <ScheduleDetail
+      :visible="detailVisible"
+      :schedule="selectedSchedule"
+      @close="handleDetailClose"
+      @confirm="handleDetailConfirm"
+      @cancel="handleDetailCancel"
+      @edit="handleDetailEdit"
+      @call="handleDetailCall"
+    />
+
+    <!-- 档期表单弹窗 -->
+    <ScheduleForm
+      :visible="formVisible"
+      :schedule="editingSchedule"
+      :request="selectedRequest"
+      @close="handleFormClose"
+      @submit="handleFormSubmit"
+    />
   </view>
 </template>
 
@@ -80,6 +114,8 @@ import CalendarView from './components/CalendarView.vue'
 import ScheduleList from './components/ScheduleList.vue'
 import RequestList from './components/RequestList.vue'
 import StatusFilter from './components/StatusFilter.vue'
+import ScheduleDetail from './components/ScheduleDetail.vue'
+import ScheduleForm from './components/ScheduleForm.vue'
 
 // 模拟数据
 import schedulesData from '@/mock-data/schedules.json'
@@ -102,6 +138,18 @@ const schedules = ref(schedulesData)
 
 // 预约申请数据
 const requests = ref(requestsData)
+
+// 详情弹窗
+const detailVisible = ref(false)
+const selectedSchedule = ref(null)
+
+// 表单弹窗
+const formVisible = ref(false)
+const editingSchedule = ref(null)
+const selectedRequest = ref(null)
+
+// FAB 悬浮按钮
+const fabExpanded = ref(false)
 
 /**
  * 有档期的日期列表
@@ -194,14 +242,134 @@ const goToToday = () => {
  * 点击档期卡片
  */
 const handleScheduleClick = (schedule) => {
-  console.log('点击档期', schedule)
+  selectedSchedule.value = schedule
+  detailVisible.value = true
 }
 
 /**
  * 查看档期详情
  */
 const handleScheduleDetail = (schedule) => {
-  console.log('查看详情', schedule)
+  selectedSchedule.value = schedule
+  detailVisible.value = true
+}
+
+/**
+ * 关闭详情弹窗
+ */
+const handleDetailClose = () => {
+  detailVisible.value = false
+}
+
+/**
+ * 详情弹窗中确认档期
+ */
+const handleDetailConfirm = (schedule) => {
+  const index = schedules.value.findIndex(s => s.id === schedule.id)
+  if (index !== -1) {
+    schedules.value[index].status = 'confirmed'
+    uni.showToast({
+      title: '已确认',
+      icon: 'success'
+    })
+  }
+  detailVisible.value = false
+}
+
+/**
+ * 详情弹窗中取消档期
+ */
+const handleDetailCancel = (schedule) => {
+  const index = schedules.value.findIndex(s => s.id === schedule.id)
+  if (index !== -1) {
+    schedules.value[index].status = 'cancelled'
+    uni.showToast({
+      title: '已取消档期',
+      icon: 'success'
+    })
+  }
+  detailVisible.value = false
+}
+
+/**
+ * 详情弹窗中编辑档期
+ */
+const handleDetailEdit = (schedule) => {
+  detailVisible.value = false
+  editingSchedule.value = schedule
+  formVisible.value = true
+}
+
+/**
+ * 详情弹窗中联系客户
+ */
+const handleDetailCall = (schedule) => {
+  // 实际拨打电话由组件内部处理
+}
+
+/**
+ * 新建档期
+ */
+const handleNewSchedule = () => {
+  fabExpanded.value = false
+  editingSchedule.value = null
+  selectedRequest.value = null
+  formVisible.value = true
+}
+
+/**
+ * 预约申请转档期
+ */
+const handleRequestToSchedule = (request) => {
+  selectedRequest.value = request
+  // 查找是否已经存在该客户的档期
+  editingSchedule.value = null
+  formVisible.value = true
+}
+
+/**
+ * 关闭表单弹窗
+ */
+const handleFormClose = () => {
+  formVisible.value = false
+  editingSchedule.value = null
+  selectedRequest.value = null
+}
+
+/**
+ * 表单提交
+ */
+const handleFormSubmit = (data) => {
+  if (editingSchedule.value) {
+    // 编辑模式：更新现有档期
+    const index = schedules.value.findIndex(s => s.id === data.id)
+    if (index !== -1) {
+      schedules.value[index] = data
+      uni.showToast({
+        title: '档期已更新',
+        icon: 'success'
+      })
+    }
+  } else {
+    // 新建模式：添加新档期
+    schedules.value.push(data)
+    uni.showToast({
+      title: '档期已创建',
+      icon: 'success'
+    })
+
+    // 如果是从预约申请创建，更新预约状态
+    if (selectedRequest.value) {
+      const reqIndex = requests.value.findIndex(r => r.id === selectedRequest.value.id)
+      if (reqIndex !== -1) {
+        requests.value[reqIndex].status = 'approved'
+      }
+    }
+  }
+
+  formVisible.value = false
+  editingSchedule.value = null
+  selectedRequest.value = null
 }
 
 /**
@@ -358,6 +526,81 @@ onMounted(() => {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+/* FAB 悬浮按钮 */
+.fab-container {
+  position: fixed;
+  bottom: calc(120rpx + env(safe-area-inset-bottom));
+  right: 32rpx;
+  z-index: 100;
+}
+
+.fab-menu {
+  position: absolute;
+  bottom: 100%;
+  right: 0;
+  margin-bottom: 16rpx;
+  animation: slideInUp 0.3s ease;
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20rpx);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fab-item {
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+  padding: 20rpx 28rpx;
+  background: var(--lens-bg-secondary);
+  border-radius: 100rpx;
+  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.3);
+  margin-bottom: 12rpx;
+}
+
+.fab-icon {
+  font-size: 32rpx;
+}
+
+.fab-label {
+  font-size: 26rpx;
+  color: var(--lens-text-primary);
+}
+
+.fab-button {
+  width: 112rpx;
+  height: 112rpx;
+  background: var(--lens-accent);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8rpx 24rpx rgba(139, 115, 85, 0.4);
+  transition: all 0.3s ease;
+
+  &:active {
+    transform: scale(0.95);
+  }
+}
+
+.fab-main-icon {
+  font-size: 64rpx;
+  color: #FFFFFF;
+  font-weight: 200;
+  line-height: 1;
+  transition: transform 0.3s ease;
+
+  &.rotated {
+    transform: rotate(45deg);
   }
 }
 </style>
