@@ -1,0 +1,41 @@
+[
+  {
+    "id": "request_001",
+    "clientId": "client_006",
+    "clientName": "陈小姐",
+    "clientPhone": "134****4444",
+    "clientAvatar": "https://i.pravatar.cc/150?img=6",
+    "preferredDates": ["2024-02-25", "2024-02-26", "2024-02-27"],
+    "preferredTime": "下午",
+    "type": "wedding",
+    "message": "希望拍摄婚纱照，有3个备选日期，请帮忙确认",
+    "status": "pending",
+    "createdAt": "2024-01-07T09:00:00Z"
+  },
+  {
+    "id": "request_002",
+    "clientId": "client_007",
+    "clientName": "周先生",
+    "clientPhone": "133****3333",
+    "clientAvatar": "https://i.pravatar.cc/150?img=7",
+    "preferredDates": ["2024-03-01", "2024-03-02"],
+    "preferredTime": "上午",
+    "type": "commercial",
+    "message": "企业形象照，需要2小时左右",
+    "status": "pending",
+    "createdAt": "2024-01-06T16:00:00Z"
+  },
+  {
+    "id": "request_003",
+    "clientId": "client_008",
+    "clientName": "吴女士",
+    "clientPhone": "132****2222",
+    "clientAvatar": "https://i.pravatar.cc/150?img=8",
+    "preferredDates": ["2024-03-05", "2024-03-06", "2024-03-10"],
+    "preferredTime": "全天",
+    "type": "portrait",
+    "message": "个人写真，希望自然光线",
+    "status": "pending",
+    "createdAt": "2024-01-05T10:30:00Z"
+  }
+]
